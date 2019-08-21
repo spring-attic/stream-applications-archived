@@ -109,7 +109,7 @@
 								<name>scfn-bom</name>
 								<groupId>org.springframework.cloud</groupId>
 								<artifactId>spring-cloud-function-dependencies</artifactId>
-								<version>2.1.0.RELEASE</version>
+								<version>3.0.0.BUILD-SNAPSHOT</version>
 							</bom>
 							<bom>
 								<name>sc-bom</name>
