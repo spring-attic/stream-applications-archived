@@ -64,7 +64,6 @@
                 <groupId>org.springframework.cloud.stream.app.plugin</groupId>
                 <artifactId>spring-cloud-stream-app-maven-plugin</artifactId>
                 <configuration>
-                    <generatedProjectHome>${basedir}/target/apps</generatedProjectHome>
                     <generatedProjectVersion>${project.version}</generatedProjectVersion>
                     <configClass>io.pivotal.java.function.rabbit.consumer.RabbitConsumerConfiguration.class</configClass>
                     <dependencies>
