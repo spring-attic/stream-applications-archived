@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>jdbc-source-apps</artifactId>
+    <version>3.0.0.BUILD-SNAPSHOT</version>
+    <name>jdbc-source-apps</name>
+    <description>JDBC source apps</description>
+    <packaging>jar</packaging>
+
+    <parent>
+        <groupId>org.springframework.cloud.stream.app</groupId>
+        <artifactId>stream-apps-parent</artifactId>
+        <version>3.0.0.BUILD-SNAPSHOT</version>
+        <relativePath/>
+    </parent>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <jdbc-supplier.version>1.0.0.BUILD-SNAPSHOT</jdbc-supplier.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>io.pivotal.java.function</groupId>
+            <artifactId>jdbc-supplier</artifactId>
+            <version>${jdbc-supplier.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-stream-test-support</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud.stream.app</groupId>
+            <artifactId>app-starters-trigger-common</artifactId>
+            <version>${app-starters-core.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud.stream.app</groupId>
+            <artifactId>app-starters-trigger-one-common</artifactId>
+            <version>${app-starters-core.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-app-starter-doc-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.cloud.stream.app.plugin</groupId>
+                <artifactId>spring-cloud-stream-app-maven-plugin</artifactId>
+                <configuration>
+                    <generatedProjectVersion>${project.version}</generatedProjectVersion>
+                    <configClass>io.pivotal.java.function.jdbc.supplier.JdbcSupplierConfiguration.class</configClass>
+                    <dependencies>
+                        <dependency>
+                            <groupId>io.pivotal.java.function</groupId>
+                            <artifactId>jdbc-supplier</artifactId>
+                            <version>${jdbc-supplier.version}</version>
+                        </dependency>
+                    </dependencies>
+                    <generatedApps>
+                        <jdbc-source/>
+                    </generatedApps>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>

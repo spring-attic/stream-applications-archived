@@ -11,11 +11,10 @@
 
 
   	<modules>
+		<module>source</module>
+		<module>sink</module>
+		<module>processor</module>
 		<module>stream-apps-parent</module>
-		<module>jdbc-source-apps</module>
-		<module>rabbit-sink-apps</module>
-		<module>splitter-processor-apps</module>
 	</modules>
-
 
 </project>
