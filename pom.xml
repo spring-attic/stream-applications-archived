@@ -14,7 +14,6 @@
 		<module>source</module>
 		<module>sink</module>
 		<module>processor</module>
-		<module>stream-apps-parent</module>
 	</modules>
 
 </project>
