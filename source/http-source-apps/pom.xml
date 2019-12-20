@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>splitter-processor-apps</artifactId>
-    <version>3.0.0-SNAPSHOT</version>
-    <name>splitter-processor-apps</name>
-    <description>splitter processor apps</description>
+    <artifactId>http-source-apps</artifactId>
+    <version>3.0.0.BUILD-SNAPSHOT</version>
+    <name>http-source-apps</name>
+    <description>http source apps</description>
     <packaging>jar</packaging>
 
     <parent>
@@ -16,15 +16,10 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <splitter-function.version>1.0.0.BUILD-SNAPSHOT</splitter-function.version>
+        <http-supplier.version>0.0.1-SNAPSHOT</http-supplier.version>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-stream</artifactId>
-            <version>3.0.1.RELEASE</version>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -36,41 +31,32 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-json</artifactId>
-            <scope>test</scope>
-        </dependency>
-
         <dependency>
             <groupId>io.pivotal.java.function</groupId>
-            <artifactId>splitter-function</artifactId>
-            <version>${splitter-function.version}</version>
-            <scope>test</scope>
+            <artifactId>http-supplier</artifactId>
+            <version>${http-supplier.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-stream-test-support</artifactId>
-            <version>3.0.1.RELEASE</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework.integration</groupId>
-            <artifactId>spring-integration-test</artifactId>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-stream</artifactId>
-            <version>3.0.1.RELEASE</version>
-            <type>test-jar</type>
-            <classifier>test-binder</classifier>
+            <groupId>org.springframework.cloud.stream.app</groupId>
+            <artifactId>app-starters-trigger-common</artifactId>
+            <version>${app-starters-core.version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-function-context</artifactId>
-            <version>3.0.1.RELEASE</version>
+            <groupId>org.springframework.cloud.stream.app</groupId>
+            <artifactId>app-starters-trigger-one-common</artifactId>
+            <version>${app-starters-core.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -85,19 +71,20 @@
                 <artifactId>spring-cloud-stream-app-maven-plugin</artifactId>
                 <configuration>
                     <generatedProjectVersion>${project.version}</generatedProjectVersion>
-                    <configClass>io.pivotal.java.function.splitter.function.SplitterFunctionConfiguration.class</configClass>
+                    <configClass>io.pivotal.java.function.http.supplier.HttpSupplierConfiguration.class</configClass>
                     <dependencies>
                         <dependency>
                             <groupId>io.pivotal.java.function</groupId>
-                            <artifactId>splitter-function</artifactId>
-                            <version>${splitter-function.version}</version>
+                            <artifactId>http-supplier</artifactId>
+                            <version>${http-supplier.version}</version>
                         </dependency>
                     </dependencies>
                     <generatedApps>
-                        <splitter-processor/>
+                        <http-source/>
                     </generatedApps>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 

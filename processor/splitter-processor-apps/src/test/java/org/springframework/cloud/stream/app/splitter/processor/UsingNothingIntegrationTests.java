@@ -30,15 +30,18 @@ import static org.hamcrest.core.IsInstanceOf.instanceOf;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.Assert.assertThat;
 
+import static org.hamcrest.Matchers.is;
+import static org.springframework.cloud.stream.test.matcher.MessageQueueMatcher.receivesPayloadThat;
+
 public class UsingNothingIntegrationTests extends SplitterProcessorIntegrationTests {
 
-//	@Test
-//	public void test() {
-//		assertThat(this.splitter, instanceOf(Function.class));
-//		//assertSame(this.splitter, TestUtils.getPropertyValue(this.consumer, "handler"));
-//		this.input.send(new GenericMessage<>(Arrays.asList("hello", "world")));
-////		assertThat(this.collector.forChannel(this.output), receivesPayloadThat(is("hello")));
-////		assertThat(this.collector.forChannel(this.channels.output()), receivesPayloadThat(is("world")));
-//	}
+	@Test
+	@Ignore
+	public void test() {
+		assertThat(this.splitter, instanceOf(Function.class));
+		this.input.send(new GenericMessage<>(Arrays.asList("hello", "world")));
+		assertThat(this.collector.forChannel(this.output), receivesPayloadThat(is("hello")));
+		assertThat(this.collector.forChannel(this.output), receivesPayloadThat(is("world")));
+	}
 
 }
