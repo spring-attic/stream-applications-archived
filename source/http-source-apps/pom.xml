@@ -20,6 +20,7 @@
     </properties>
 
     <dependencies>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -78,10 +79,18 @@
                             <artifactId>http-supplier</artifactId>
                             <version>${http-supplier.version}</version>
                         </dependency>
+
                     </dependencies>
                     <generatedApps>
                         <http-source/>
                     </generatedApps>
+                    <additionalAppProperties>
+                        <additionalAppProperty>spring.main.web-application-type=reactive</additionalAppProperty>
+                        <additionalAppPropertiy>spring.cloud.streamapp.security.enabled=false</additionalAppPropertiy>
+                        <additionalAppProperty>spring.cloud.streamapp.security.csrf-enabled=false</additionalAppProperty>
+                    </additionalAppProperties>
+                    <additionalPlugins>
+                    </additionalPlugins>
                 </configuration>
             </plugin>
 
