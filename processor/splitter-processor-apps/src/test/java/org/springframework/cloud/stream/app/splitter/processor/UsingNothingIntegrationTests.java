@@ -35,13 +35,13 @@ import static org.springframework.cloud.stream.test.matcher.MessageQueueMatcher.
 
 public class UsingNothingIntegrationTests extends SplitterProcessorIntegrationTests {
 
-	@Test
-	@Ignore
-	public void test() {
-		assertThat(this.splitter, instanceOf(Function.class));
-		this.input.send(new GenericMessage<>(Arrays.asList("hello", "world")));
-		assertThat(this.collector.forChannel(this.output), receivesPayloadThat(is("hello")));
-		assertThat(this.collector.forChannel(this.output), receivesPayloadThat(is("world")));
-	}
+//	@Test
+//	@Ignore
+//	public void test() {
+//		assertThat(this.splitter, instanceOf(Function.class));
+//		this.input.send(new GenericMessage<>(Arrays.asList("hello", "world")));
+//		assertThat(this.collector.forChannel(this.output), receivesPayloadThat(is("hello")));
+//		assertThat(this.collector.forChannel(this.output), receivesPayloadThat(is("world")));
+//	}
 
 }
