@@ -16,7 +16,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <http-supplier.version>0.0.1-SNAPSHOT</http-supplier.version>
+        <http-supplier.version>1.0.0.BUILD-SNAPSHOT</http-supplier.version>
     </properties>
 
     <dependencies>
