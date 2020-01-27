@@ -16,11 +16,19 @@
 
 package org.springframework.cloud.stream.app.rabbit.sink;
 
+import java.util.function.Consumer;
+
+import com.github.dockerjava.api.command.CreateContainerCmd;
+import com.github.dockerjava.api.model.ExposedPort;
+import com.github.dockerjava.api.model.PortBinding;
+import com.github.dockerjava.api.model.Ports;
+import org.junit.ClassRule;
 import org.junit.jupiter.api.Test;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.Queue;
 import org.springframework.integration.support.MessageBuilder;
 import org.springframework.test.context.TestPropertySource;
+import org.testcontainers.containers.GenericContainer;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
@@ -29,16 +37,25 @@ import static org.junit.Assert.assertEquals;
 			"rabbit.own-connection=true"})
 public class OwnConnectionTest extends RabbitSinkIntegrationTests {
 
-		@Test
-		public void test() {
-			this.rabbitAdmin.declareQueue(
-					new Queue("scsapp-testOwn", false, false, true));
-			this.bootFactory.resetConnection();
-			this.channels.send(MessageBuilder.withPayload("foo".getBytes())
-					.build());
-			this.rabbitTemplate.setReceiveTimeout(10000);
-			Message received = this.rabbitTemplate.receive("scsapp-testOwn");
-			assertEquals("foo", new String(received.getBody()));
-			assertThat(this.bootFactory.getCacheProperties().getProperty("localPort")).isEqualTo("0");
-		}
+	/**
+	 * RabbitMQ
+	 */
+//	@ClassRule
+//	public static GenericContainer rabbitMq = new GenericContainer("rabbitmq:3.5.3")
+//			.withExposedPorts(5672);
+
+
+
+	@Test
+	public void test() {
+		this.rabbitAdmin.declareQueue(
+				new Queue("scsapp-testOwn", false, false, true));
+		this.bootFactory.resetConnection();
+		this.channels.send(MessageBuilder.withPayload("foo".getBytes())
+				.build());
+		this.rabbitTemplate.setReceiveTimeout(10000);
+		Message received = this.rabbitTemplate.receive("scsapp-testOwn");
+		assertEquals("foo", new String(received.getBody()));
+		assertThat(this.bootFactory.getCacheProperties().getProperty("localPort")).isEqualTo("0");
+	}
 }

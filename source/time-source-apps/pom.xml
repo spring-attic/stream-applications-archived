@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>http-source-apps</artifactId>
+    <artifactId>time-source-apps</artifactId>
     <version>3.0.0.BUILD-SNAPSHOT</version>
-    <name>http-source-apps</name>
-    <description>http source apps</description>
+    <name>time-source-apps</name>
+    <description>time source apps</description>
     <packaging>jar</packaging>
 
     <parent>
@@ -16,13 +17,20 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <http-supplier.version>1.0.0.BUILD-SNAPSHOT</http-supplier.version>
+        <time-supplier.version>1.0.0.BUILD-SNAPSHOT</time-supplier.version>
     </properties>
 
     <dependencies>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.pivotal.java.function</groupId>
+            <artifactId>time-supplier</artifactId>
+            <version>${time-supplier.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -31,22 +39,6 @@
             <version>3.0.1.RELEASE</version>
             <type>test-jar</type>
             <classifier>test-binder</classifier>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.pivotal.java.function</groupId>
-            <artifactId>http-supplier</artifactId>
-            <version>${http-supplier.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webflux</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.projectreactor</groupId>
-            <artifactId>reactor-test</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -62,23 +54,18 @@
                 <artifactId>spring-cloud-stream-app-maven-plugin</artifactId>
                 <configuration>
                     <generatedProjectVersion>${project.version}</generatedProjectVersion>
-                    <configClass>io.pivotal.java.function.http.supplier.HttpSupplierConfiguration.class</configClass>
+                    <configClass>io.pivotal.java.function.time.supplier.TimeSupplierConfiguration.class</configClass>
                     <dependencies>
                         <dependency>
                             <groupId>io.pivotal.java.function</groupId>
-                            <artifactId>http-supplier</artifactId>
-                            <version>${http-supplier.version}</version>
+                            <artifactId>time-supplier</artifactId>
+                            <version>${time-supplier.version}</version>
                         </dependency>
 
                     </dependencies>
                     <generatedApps>
-                        <http-source/>
+                        <time-source/>
                     </generatedApps>
-                    <additionalAppProperties>
-                        <additionalAppProperty>spring.main.web-application-type=reactive</additionalAppProperty>
-                        <additionalAppPropertiy>spring.cloud.streamapp.security.enabled=false</additionalAppPropertiy>
-                        <additionalAppProperty>spring.cloud.streamapp.security.csrf-enabled=false</additionalAppProperty>
-                    </additionalAppProperties>
                     <additionalPlugins>
                     </additionalPlugins>
                 </configuration>

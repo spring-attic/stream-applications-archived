@@ -12,5 +12,6 @@
     <modules>
         <module>jdbc-source-apps</module>
         <module>http-source-apps</module>
+        <module>time-source-apps</module>
     </modules>
 </project>

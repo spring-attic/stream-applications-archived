@@ -16,8 +16,15 @@
 
 package org.springframework.cloud.stream.app.rabbit.sink;
 
+import java.util.function.Consumer;
+
+import com.github.dockerjava.api.command.CreateContainerCmd;
+import com.github.dockerjava.api.model.ExposedPort;
+import com.github.dockerjava.api.model.PortBinding;
+import com.github.dockerjava.api.model.Ports;
 import io.pivotal.java.function.rabbit.consumer.RabbitConsumerApplication;
 import io.pivotal.java.function.rabbit.consumer.RabbitConsumerProperties;
+import org.junit.ClassRule;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.DirectExchange;
@@ -33,6 +40,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.messaging.SubscribableChannel;
 import org.springframework.test.annotation.DirtiesContext;
+import org.testcontainers.containers.GenericContainer;
 
 @SpringBootTest(classes = {RabbitConsumerApplication.class},
 		properties = {"spring.cloud.stream.function.definition=rabbitConsumer"},
@@ -59,6 +67,15 @@ abstract class RabbitSinkIntegrationTests {
 
 	@Autowired
 	protected CachingConnectionFactory bootFactory;
+
+	static {
+		Consumer<CreateContainerCmd> cmd = e -> e.withPortBindings(new PortBinding(Ports.Binding.bindPort(5672), new ExposedPort(5672)));
+
+		GenericContainer rabbitMq = new GenericContainer("rabbitmq:3.5.3")
+				.withExposedPorts(5672)
+				.withCreateContainerCmdModifier(cmd);
+		rabbitMq.start();
+	}
 
 	static class FooConfiguration {
 

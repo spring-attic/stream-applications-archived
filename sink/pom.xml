@@ -11,5 +11,6 @@
 
     <modules>
         <module>rabbit-sink-apps</module>
+        <module>log-sink-apps</module>
     </modules>
 </project>

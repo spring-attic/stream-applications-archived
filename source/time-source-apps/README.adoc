@@ -1,0 +1,9 @@
+//tag::ref-doc[]
+
+//tag::configuration-properties[]
+$$spring.cloud.stream.poller.fixed-delay$$:: $$Fixed delay for default poller.$$ *($$Long$$, default: `$$1000$$`)*
+$$spring.cloud.stream.poller.max-messages-per-poll$$:: $$Maximum messages per poll for the default poller.$$ *($$Long$$, default: `$$1$$`)*
+$$time.date-format$$:: $$Format for the date value.$$ *($$String$$, default: `$$MM/dd/yy HH:mm:ss$$`)*
+//end::configuration-properties[]
+
+//end::ref-doc[]
