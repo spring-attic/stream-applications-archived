@@ -1,0 +1,40 @@
+== Stream applications generator
+
+This is the repository used for generating the various out-of-the-box Spring Cloud Stream Applications with both Kafka and Rabbitmq binders.
+The repository is structured at the top level as `processor`, `sink` and `source` indicating the underlying Spring Cloud Stream application type.
+
+== Applications
+
+Following applications are generated for Kafka and Rabbit binders.
+
+=== Sources
+
+* link:source/time-source-apps/README.adoc[time-source]
+* link:source/http-source-apps/README.adoc[http-source]
+* link:source/jdbc-source-apps/README.adoc[jdbc-source]
+
+=== Sinks
+
+* link:sink/log-sink-apps/README.adoc[log-sink]
+* link:sink/rabbit-sink-apps/README.adoc[rabbit-sink]
+
+=== Processors
+
+* link:processor/splitter-processor-apps/README.adoc[splitter-processor]
+
+
+=== Building
+
+Go to the root of the repo:
+
+```bash
+./mvnw clean install
+```
+
+Or go to the relevant application type that you are interested in and then do:
+
+```bash
+./mvnw clean install
+```
+
+This will generate the binder based apps which you then can `cd` into the `apps` folder and build.
