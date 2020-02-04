@@ -1,4 +1,15 @@
 //tag::ref-doc[]
+= Splitter Processor
+
+The splitter app builds upon the concept of the same name in Spring Integration and allows the splitting of a single
+message into several distinct messages.
+
+=== Payload
+
+* A collection of split messages based on a given expression, delimiter or file marker.
+
+
+== Options
 
 //tag::configuration-properties[]
 $$splitter.apply-sequence$$:: $$Add correlation/sequence information in headers to facilitate later aggregation.$$ *($$Boolean$$, default: `$$true$$`)*

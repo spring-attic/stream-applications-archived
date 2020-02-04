@@ -1,4 +1,13 @@
 //tag::ref-doc[]
+= RabbitMQ Sink
+
+This module sends messages to RabbitMQ.
+
+== Options
+
+The **$$rabbit$$** $$sink$$ has the following options:
+
+(See the Spring Boot documentation for RabbitMQ connection properties)
 
 //tag::configuration-properties[]
 $$rabbit.converter-bean-name$$:: $$The bean name for a custom message converter; if omitted, a SimpleMessageConverter is used. If 'jsonConverter', a Jackson2JsonMessageConverter bean will be created for you.$$ *($$String$$, default: `$$<none>$$`)*
