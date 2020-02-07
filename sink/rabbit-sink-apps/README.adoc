@@ -24,8 +24,8 @@ $$spring.rabbitmq.host$$:: $$RabbitMQ host.$$ *($$String$$, default: `$$localhos
 $$spring.rabbitmq.password$$:: $$Login to authenticate against the broker.$$ *($$String$$, default: `$$guest$$`)*
 $$spring.rabbitmq.port$$:: $$RabbitMQ port.$$ *($$Integer$$, default: `$$5672$$`)*
 $$spring.rabbitmq.publisher-confirm-type$$:: $$Type of publisher confirms to use.$$ *($$ConfirmType$$, default: `$$<none>$$`, possible values: `SIMPLE`,`CORRELATED`,`NONE`)*
-$$spring.rabbitmq.publisher-confirms$$:: $$<documentation missing>$$ *($$Boolean$$, default: `$$<none>$$`)*
 $$spring.rabbitmq.publisher-returns$$:: $$Whether to enable publisher returns.$$ *($$Boolean$$, default: `$$false$$`)*
+$$spring.rabbitmq.requested-channel-max$$:: $$Number of channels per connection requested by the client. Use 0 for unlimited.$$ *($$Integer$$, default: `$$2047$$`)*
 $$spring.rabbitmq.requested-heartbeat$$:: $$Requested heartbeat timeout; zero for none. If a duration suffix is not specified, seconds will be used.$$ *($$Duration$$, default: `$$<none>$$`)*
 $$spring.rabbitmq.username$$:: $$Login user to authenticate to the broker.$$ *($$String$$, default: `$$guest$$`)*
 $$spring.rabbitmq.virtual-host$$:: $$Virtual host to use when connecting to the broker.$$ *($$String$$, default: `$$<none>$$`)*

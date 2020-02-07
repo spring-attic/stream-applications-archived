@@ -20,10 +20,6 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.cloud.stream.app.trigger.TriggerConfiguration;
-import org.springframework.cloud.stream.app.trigger.TriggerPropertiesMaxMessagesDefaultOne;
-import org.springframework.context.annotation.Import;
 import org.springframework.messaging.Message;
 import org.springframework.test.context.TestPropertySource;
 
@@ -31,9 +27,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@TestPropertySource(properties = { "jdbc.query=select id, name from test order by id", "trigger.fixedDelay=1" })
-@Import(TriggerConfiguration.class)
-@EnableConfigurationProperties(TriggerPropertiesMaxMessagesDefaultOne.class)
+@TestPropertySource(properties = { "jdbc.query=select id, name from test order by id", "spring.cloud.stream.poller.fixedDelay=1" })
 public class SelectAllWithMinDelayTests extends JdbcSourceIntegrationTests {
 
 	@Test

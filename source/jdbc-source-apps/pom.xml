@@ -46,18 +46,6 @@
             <artifactId>h2</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud.stream.app</groupId>
-            <artifactId>app-starters-trigger-common</artifactId>
-            <version>${app-starters-core.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud.stream.app</groupId>
-            <artifactId>app-starters-trigger-one-common</artifactId>
-            <version>${app-starters-core.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
