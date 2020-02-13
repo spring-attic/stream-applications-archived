@@ -14,11 +14,6 @@
         <relativePath/>
     </parent>
 
-    <properties>
-        <java.version>1.8</java.version>
-        <log-consumer.version>1.0.0.BUILD-SNAPSHOT</log-consumer.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -28,16 +23,7 @@
         <dependency>
             <groupId>io.pivotal.java.function</groupId>
             <artifactId>log-consumer</artifactId>
-            <version>${log-consumer.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-stream</artifactId>
-            <version>3.0.2.BUILD-SNAPSHOT</version>
-            <type>test-jar</type>
-            <classifier>test-binder</classifier>
-            <scope>test</scope>
+            <version>${java-functions.version}</version>
         </dependency>
         <dependency>
             <groupId>org.awaitility</groupId>
@@ -68,7 +54,7 @@
                         <dependency>
                             <groupId>io.pivotal.java.function</groupId>
                             <artifactId>log-consumer</artifactId>
-                            <version>${log-consumer.version}</version>
+                            <version>${java-functions.version}</version>
                         </dependency>
                     </dependencies>
                     <generatedApps>
