@@ -60,6 +60,10 @@
                     <generatedApps>
                         <log-sink/>
                     </generatedApps>
+                    <enableContainerImageMetadata>true</enableContainerImageMetadata>
+                    <metadataSourceTypeFilters>
+                        <filter>io.pivotal.java.function.log.consumer.LogConsumerProperties</filter>
+                    </metadataSourceTypeFilters>
                 </configuration>
             </plugin>
 

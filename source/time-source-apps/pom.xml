@@ -47,13 +47,18 @@
                             <artifactId>time-supplier</artifactId>
                             <version>${java-functions.version}</version>
                         </dependency>
-
                     </dependencies>
+
                     <generatedApps>
                         <time-source/>
                     </generatedApps>
-                    <additionalPlugins>
-                    </additionalPlugins>
+
+                    <enableContainerImageMetadata>true</enableContainerImageMetadata>
+                    <metadataSourceTypeFilters>
+                        <filter>io.pivotal.java.function.time.supplier.TimeProperties</filter>
+                        <filter>org.springframework.cloud.stream.config.DefaultPollerProperties</filter>
+                    </metadataSourceTypeFilters>
+
                 </configuration>
             </plugin>
 

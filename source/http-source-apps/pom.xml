@@ -65,8 +65,14 @@
                         <additionalAppPropertiy>spring.cloud.streamapp.security.enabled=false</additionalAppPropertiy>
                         <additionalAppProperty>spring.cloud.streamapp.security.csrf-enabled=false</additionalAppProperty>
                     </additionalAppProperties>
-                    <additionalPlugins>
-                    </additionalPlugins>
+                    <enableContainerImageMetadata>true</enableContainerImageMetadata>
+                    <metadataSourceTypeFilters>
+                        <filter>io.pivotal.java.function.http.supplier.HttpSourceProperties</filter>
+                        <filter>io.pivotal.java.function.http.supplier.HttpSourceProperties$Cors</filter>
+                    </metadataSourceTypeFilters>
+                    <metadataNameFilters>
+                        <filter>server.port</filter>
+                    </metadataNameFilters>
                 </configuration>
             </plugin>
 
