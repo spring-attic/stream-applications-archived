@@ -70,9 +70,10 @@
                             <version>${java-functions.version}</version>
                         </dependency>
                     </dependencies>
-                    <generatedApps>
-                        <splitter-processor/>
-                    </generatedApps>
+
+                    <generatedAppName>splitter</generatedAppName>
+                    <generatedAppType>processor</generatedAppType>
+
                     <enableContainerImageMetadata>true</enableContainerImageMetadata>
                     <metadataSourceTypeFilters>
                         <filter>io.pivotal.java.function.splitter.function.SplitterFunctionProperties</filter>

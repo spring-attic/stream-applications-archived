@@ -49,9 +49,8 @@
                         </dependency>
                     </dependencies>
 
-                    <generatedApps>
-                        <time-source/>
-                    </generatedApps>
+                    <generatedAppName>time</generatedAppName>
+                    <generatedAppType>source</generatedAppType>
 
                     <enableContainerImageMetadata>true</enableContainerImageMetadata>
                     <metadataSourceTypeFilters>

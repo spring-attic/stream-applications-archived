@@ -79,9 +79,10 @@
                             <version>${java-functions.version}</version>
                         </dependency>
                     </dependencies>
-                    <generatedApps>
-                        <rabbit-sink/>
-                    </generatedApps>
+
+                    <generatedAppName>rabbit</generatedAppName>
+                    <generatedAppType>sink</generatedAppType>
+
                     <enableContainerImageMetadata>true</enableContainerImageMetadata>
                     <metadataSourceTypeFilters>
                         <filter>io.pivotal.java.function.rabbit.consumer.RabbitConsumerProperties</filter>

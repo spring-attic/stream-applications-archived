@@ -55,11 +55,11 @@
                             <artifactId>http-supplier</artifactId>
                             <version>${java-functions.version}</version>
                         </dependency>
-
                     </dependencies>
-                    <generatedApps>
-                        <http-source/>
-                    </generatedApps>
+
+                    <generatedAppName>http</generatedAppName>
+                    <generatedAppType>source</generatedAppType>
+
                     <additionalAppProperties>
                         <additionalAppProperty>spring.main.web-application-type=reactive</additionalAppProperty>
                         <additionalAppPropertiy>spring.cloud.streamapp.security.enabled=false</additionalAppPropertiy>
