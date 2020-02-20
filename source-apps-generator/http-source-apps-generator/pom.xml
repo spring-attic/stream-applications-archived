@@ -62,7 +62,7 @@
 
                     <additionalAppProperties>
                         <additionalAppProperty>spring.main.web-application-type=reactive</additionalAppProperty>
-                        <additionalAppPropertiy>spring.cloud.streamapp.security.enabled=false</additionalAppPropertiy>
+                        <additionalAppProperty>spring.cloud.streamapp.security.enabled=false</additionalAppProperty>
                         <additionalAppProperty>spring.cloud.streamapp.security.csrf-enabled=false</additionalAppProperty>
                     </additionalAppProperties>
                     <enableContainerImageMetadata>true</enableContainerImageMetadata>
