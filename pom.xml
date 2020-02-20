@@ -9,9 +9,9 @@
 	<packaging>pom</packaging>
 
   	<modules>
-		<module>source</module>
-		<module>sink</module>
-		<module>processor</module>
+		<module>source-apps-generator</module>
+		<module>sink-apps-generator</module>
+		<module>processor-apps-generator</module>
 	</modules>
 
 </project>

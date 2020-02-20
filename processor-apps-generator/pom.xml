@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.springframework.cloud.stream.app</groupId>
-    <artifactId>sink</artifactId>
+    <artifactId>processor-apps-generator</artifactId>
     <version>3.0.0.BUILD-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
-        <module>rabbit-sink-apps</module>
-        <module>log-sink-apps</module>
+        <module>splitter-processor-apps-generator</module>
     </modules>
+
 </project>

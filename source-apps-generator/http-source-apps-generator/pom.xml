@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>rabbit-sink-apps</artifactId>
+    <artifactId>http-source-apps-generator</artifactId>
     <version>3.0.0.BUILD-SNAPSHOT</version>
-    <name>rabbit-sink-apps</name>
-    <description>rabbit sink apps</description>
+    <name>http-source-apps-generator</name>
+    <description>http source apps generator</description>
     <packaging>jar</packaging>
 
     <parent>
@@ -19,43 +19,20 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-amqp</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-stream-binder-rabbit-test-support</artifactId>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.pivotal.java.function</groupId>
-            <artifactId>rabbit-consumer</artifactId>
+            <artifactId>http-supplier</artifactId>
             <version>${java-functions.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-stream-test-support</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.testcontainers</groupId>
-            <artifactId>testcontainers</artifactId>
-            <version>1.9.1</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.testcontainers</groupId>
-            <artifactId>rabbitmq</artifactId>
-            <version>1.12.5</version>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-test</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -71,23 +48,31 @@
                 <artifactId>spring-cloud-stream-app-maven-plugin</artifactId>
                 <configuration>
                     <generatedProjectVersion>${project.version}</generatedProjectVersion>
-                    <configClass>io.pivotal.java.function.rabbit.consumer.RabbitConsumerConfiguration.class</configClass>
+                    <configClass>io.pivotal.java.function.http.supplier.HttpSupplierConfiguration.class</configClass>
                     <dependencies>
                         <dependency>
                             <groupId>io.pivotal.java.function</groupId>
-                            <artifactId>rabbit-consumer</artifactId>
+                            <artifactId>http-supplier</artifactId>
                             <version>${java-functions.version}</version>
                         </dependency>
                     </dependencies>
 
-                    <generatedAppName>rabbit</generatedAppName>
-                    <generatedAppType>sink</generatedAppType>
+                    <generatedAppName>http</generatedAppName>
+                    <generatedAppType>source</generatedAppType>
 
+                    <additionalAppProperties>
+                        <additionalAppProperty>spring.main.web-application-type=reactive</additionalAppProperty>
+                        <additionalAppPropertiy>spring.cloud.streamapp.security.enabled=false</additionalAppPropertiy>
+                        <additionalAppProperty>spring.cloud.streamapp.security.csrf-enabled=false</additionalAppProperty>
+                    </additionalAppProperties>
                     <enableContainerImageMetadata>true</enableContainerImageMetadata>
                     <metadataSourceTypeFilters>
-                        <filter>io.pivotal.java.function.rabbit.consumer.RabbitConsumerProperties</filter>
-                        <filter>org.springframework.boot.autoconfigure.amqp.RabbitProperties</filter>
+                        <filter>io.pivotal.java.function.http.supplier.HttpSourceProperties</filter>
+                        <filter>io.pivotal.java.function.http.supplier.HttpSourceProperties$Cors</filter>
                     </metadataSourceTypeFilters>
+                    <metadataNameFilters>
+                        <filter>server.port</filter>
+                    </metadataNameFilters>
                 </configuration>
             </plugin>
 
