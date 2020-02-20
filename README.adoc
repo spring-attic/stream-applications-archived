@@ -1,7 +1,8 @@
 == Stream applications generator
 
 This is the repository used for generating the various out-of-the-box Spring Cloud Stream Applications with both Kafka and Rabbitmq binders.
-The repository is structured at the top level as `processor`, `sink` and `source` indicating the underlying Spring Cloud Stream application type.
+The repository is structured at the top level as `processor-apps-generator`, `sink-apps-generator` and `source-apps-generator` indicating the underlying Spring Cloud Stream application type for which the applications are generated.
+The actual functions used in the apps are coming from the http://github.com/pivotal/java-functions[Java Functions] repository.
 
 == Applications
 
@@ -9,18 +10,18 @@ Following applications are generated for Kafka and Rabbit binders.
 
 === Sources
 
-* link:source/time-source-apps/README.adoc[time-source]
-* link:source/http-source-apps/README.adoc[http-source]
-* link:source/jdbc-source-apps/README.adoc[jdbc-source]
+* link:source-apps-generator/time-source-apps-generator/README.adoc[time-source]
+* link:source-apps-generator/http-source-apps-generator/README.adoc[http-source]
+* link:source-apps-generator/jdbc-source-apps-generator/README.adoc[jdbc-source]
 
 === Sinks
 
-* link:sink/log-sink-apps/README.adoc[log-sink]
-* link:sink/rabbit-sink-apps/README.adoc[rabbit-sink]
+* link:sink-apps-generator/log-sink-apps-generator/README.adoc[log-sink]
+* link:sink-apps-generator/rabbit-sink-apps-generator/README.adoc[rabbit-sink]
 
 === Processors
 
-* link:processor/splitter-processor-apps/README.adoc[splitter-processor]
+* link:processor-apps-generator/splitter-processor-apps-generator/README.adoc[splitter-processor]
 
 
 === Building
