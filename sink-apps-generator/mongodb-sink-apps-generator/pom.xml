@@ -38,7 +38,7 @@
                 <artifactId>spring-cloud-stream-app-maven-plugin</artifactId>
                 <configuration>
                     <generatedProjectVersion>${project.version}</generatedProjectVersion>
-                    <configClass>io.pivotal.java.function.mongodb.consumer.MongoDbConsumerConfiguration.class</configClass>
+                    <configClass>io.pivotal.java.function.mongo.consumer.MongoDbConsumerConfiguration.class</configClass>
                     <dependencies>
                         <dependency>
                             <groupId>io.pivotal.java.function</groupId>
@@ -52,7 +52,7 @@
 
                     <enableContainerImageMetadata>true</enableContainerImageMetadata>
                     <metadataSourceTypeFilters>
-                        <filter>io.pivotal.java.function.mongodb.consumer.MongoDbConsumerProperties</filter>
+                        <filter>io.pivotal.java.function.mongo.consumer.MongoDbConsumerProperties</filter>
                     </metadataSourceTypeFilters>
                 </configuration>
             </plugin>
