@@ -12,5 +12,6 @@
     <modules>
         <module>rabbit-sink-apps-generator</module>
         <module>log-sink-apps-generator</module>
+        <module>cassandra-sink-apps-generator</module>
     </modules>
 </project>

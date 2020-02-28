@@ -1,0 +1,22 @@
+//tag::ref-doc[]
+= Cassandra Sink
+
+
+== Options
+
+The **$$cassandra$$** $$sink$$ has the following options:
+
+
+//tag::configuration-properties[]
+$$cassandra.cluster.create-keyspace$$:: $$Flag to create (or not) keyspace on application startup.$$ *($$Boolean$$, default: `$$false$$`)*
+$$cassandra.cluster.entity-base-packages$$:: $$Base packages to scan for entities annotated with Table annotations.$$ *($$String[]$$, default: `$$[]$$`)*
+$$cassandra.cluster.init-script$$:: $$Resource with CQL scripts (delimited by ';') to initialize keyspace schema.$$ *($$Resource$$, default: `$$<none>$$`)*
+$$cassandra.cluster.skip-ssl-validation$$:: $$Flag to validate the Servers' SSL certs$$ *($$Boolean$$, default: `$$false$$`)*
+$$cassandra.consistency-level$$:: $$The consistency level for write operation.$$ *($$ConsistencyLevel$$, default: `$$<none>$$`)*
+$$cassandra.ingest-query$$:: $$Ingest Cassandra query.$$ *($$String$$, default: `$$<none>$$`)*
+$$cassandra.query-type$$:: $$QueryType for Cassandra Sink.$$ *($$Type$$, default: `$$<none>$$`, possible values: `INSERT`,`UPDATE`,`DELETE`,`STATEMENT`)*
+$$cassandra.statement-expression$$:: $$Expression in Cassandra query DSL style.$$ *($$Expression$$, default: `$$<none>$$`)*
+$$cassandra.ttl$$:: $$Time-to-live option of WriteOptions.$$ *($$Integer$$, default: `$$0$$`)*
+//end::configuration-properties[]
+
+//end::ref-doc[]
