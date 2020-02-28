@@ -13,5 +13,6 @@
         <module>jdbc-source-apps-generator</module>
         <module>http-source-apps-generator</module>
         <module>time-source-apps-generator</module>
+        <module>mongodb-source-apps-generator</module>
     </modules>
 </project>
