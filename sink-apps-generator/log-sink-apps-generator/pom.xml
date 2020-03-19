@@ -48,8 +48,12 @@
                 <groupId>org.springframework.cloud.stream.app.plugin</groupId>
                 <artifactId>spring-cloud-stream-app-maven-plugin</artifactId>
                 <configuration>
-                    <generatedProjectVersion>${project.version}</generatedProjectVersion>
-                    <configClass>io.pivotal.java.function.log.consumer.LogConsumerConfiguration.class</configClass>
+                    <generatedApp>
+                        <name>log</name>
+                        <type>sink</type>
+                        <version>${project.version}</version>
+                        <configClass>io.pivotal.java.function.log.consumer.LogConsumerConfiguration.class</configClass>
+                    </generatedApp>
                     <dependencies>
                         <dependency>
                             <groupId>io.pivotal.java.function</groupId>
@@ -57,11 +61,6 @@
                             <version>${java-functions.version}</version>
                         </dependency>
                     </dependencies>
-
-                    <generatedAppName>log</generatedAppName>
-                    <generatedAppType>sink</generatedAppType>
-
-                    <enableContainerImageMetadata>true</enableContainerImageMetadata>
                 </configuration>
             </plugin>
 

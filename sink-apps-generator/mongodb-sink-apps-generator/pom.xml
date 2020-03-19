@@ -37,8 +37,12 @@
                 <groupId>org.springframework.cloud.stream.app.plugin</groupId>
                 <artifactId>spring-cloud-stream-app-maven-plugin</artifactId>
                 <configuration>
-                    <generatedProjectVersion>${project.version}</generatedProjectVersion>
-                    <configClass>io.pivotal.java.function.mongo.consumer.MongoDbConsumerConfiguration.class</configClass>
+                    <generatedApp>
+                        <name>mongodb</name>
+                        <type>sink</type>
+                        <version>${project.version}</version>
+                        <configClass>io.pivotal.java.function.mongo.consumer.MongoDbConsumerConfiguration.class</configClass>
+                    </generatedApp>
                     <dependencies>
                         <dependency>
                             <groupId>io.pivotal.java.function</groupId>
@@ -46,11 +50,6 @@
                             <version>${java-functions.version}</version>
                         </dependency>
                     </dependencies>
-
-                    <generatedAppName>mongodb</generatedAppName>
-                    <generatedAppType>sink</generatedAppType>
-
-                    <enableContainerImageMetadata>true</enableContainerImageMetadata>
                 </configuration>
             </plugin>
 

@@ -70,8 +70,13 @@
                 <groupId>org.springframework.cloud.stream.app.plugin</groupId>
                 <artifactId>spring-cloud-stream-app-maven-plugin</artifactId>
                 <configuration>
-                    <generatedProjectVersion>${project.version}</generatedProjectVersion>
-                    <configClass>io.pivotal.java.function.rabbit.consumer.RabbitConsumerConfiguration.class</configClass>
+                    <generatedApp>
+                        <name>rabbit</name>
+                        <type>sink</type>
+                        <version>${project.version}</version>
+                        <configClass>io.pivotal.java.function.rabbit.consumer.RabbitConsumerConfiguration.class</configClass>
+                    </generatedApp>
+
                     <dependencies>
                         <dependency>
                             <groupId>io.pivotal.java.function</groupId>
@@ -79,11 +84,6 @@
                             <version>${java-functions.version}</version>
                         </dependency>
                     </dependencies>
-
-                    <generatedAppName>rabbit</generatedAppName>
-                    <generatedAppType>sink</generatedAppType>
-
-                    <enableContainerImageMetadata>true</enableContainerImageMetadata>
                 </configuration>
             </plugin>
 

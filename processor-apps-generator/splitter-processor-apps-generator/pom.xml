@@ -61,8 +61,13 @@
                 <groupId>org.springframework.cloud.stream.app.plugin</groupId>
                 <artifactId>spring-cloud-stream-app-maven-plugin</artifactId>
                 <configuration>
-                    <generatedProjectVersion>${project.version}</generatedProjectVersion>
-                    <configClass>io.pivotal.java.function.splitter.function.SplitterFunctionConfiguration.class</configClass>
+                    <generatedApp>
+                        <name>splitter</name>
+                        <type>processor</type>
+                        <version>${project.version}</version>
+                        <configClass>io.pivotal.java.function.splitter.function.SplitterFunctionConfiguration.class</configClass>
+                    </generatedApp>
+
                     <dependencies>
                         <dependency>
                             <groupId>io.pivotal.java.function</groupId>
@@ -71,10 +76,9 @@
                         </dependency>
                     </dependencies>
 
-                    <generatedAppName>splitter</generatedAppName>
-                    <generatedAppType>processor</generatedAppType>
-
-                    <enableContainerImageMetadata>true</enableContainerImageMetadata>
+                    <containerImage>
+                        <enableMetadata>true</enableMetadata>
+                    </containerImage>
                 </configuration>
             </plugin>
         </plugins>
