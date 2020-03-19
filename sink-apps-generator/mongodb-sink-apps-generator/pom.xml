@@ -51,9 +51,6 @@
                     <generatedAppType>sink</generatedAppType>
 
                     <enableContainerImageMetadata>true</enableContainerImageMetadata>
-                    <metadataSourceTypeFilters>
-                        <filter>io.pivotal.java.function.mongo.consumer.MongoDbConsumerProperties</filter>
-                    </metadataSourceTypeFilters>
                 </configuration>
             </plugin>
 

@@ -84,10 +84,6 @@
                     <generatedAppType>sink</generatedAppType>
 
                     <enableContainerImageMetadata>true</enableContainerImageMetadata>
-                    <metadataSourceTypeFilters>
-                        <filter>io.pivotal.java.function.rabbit.consumer.RabbitConsumerProperties</filter>
-                        <filter>org.springframework.boot.autoconfigure.amqp.RabbitProperties</filter>
-                    </metadataSourceTypeFilters>
                 </configuration>
             </plugin>
 

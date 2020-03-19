@@ -75,9 +75,6 @@
                     <generatedAppType>processor</generatedAppType>
 
                     <enableContainerImageMetadata>true</enableContainerImageMetadata>
-                    <metadataSourceTypeFilters>
-                        <filter>io.pivotal.java.function.splitter.function.SplitterFunctionProperties</filter>
-                    </metadataSourceTypeFilters>
                 </configuration>
             </plugin>
         </plugins>
