@@ -14,12 +14,11 @@
  * limitations under the License.
  */
 
-package org.springframework.cloud.stream.app;
+package org.springframework.cloud.stream.app.filter.processor;
 
 import java.nio.charset.StandardCharsets;
 
-import io.pivotal.java.function.log.consumer.LogConsumerConfiguration;
-import org.awaitility.Awaitility;
+import io.pivotal.java.function.filter.function.FilterFunctionConfiguration;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
@@ -29,31 +28,46 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.test.system.CapturedOutput;
 import org.springframework.boot.test.system.OutputCaptureExtension;
 import org.springframework.cloud.stream.binder.test.InputDestination;
+import org.springframework.cloud.stream.binder.test.OutputDestination;
 import org.springframework.cloud.stream.binder.test.TestChannelBinderConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Import;
+import org.springframework.messaging.Message;
 import org.springframework.messaging.support.GenericMessage;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 /**
- * @author Soby Chacko
+ * @author Christian Tzolov
  */
 @ExtendWith(OutputCaptureExtension.class)
-public class LogSinkTests {
+public class FilterProcessorTests {
 
 	@Test
-	public void testSourceFromSupplier(CapturedOutput output) {
+	public void testFilterProcessor(CapturedOutput output) {
 		try (ConfigurableApplicationContext context = new SpringApplicationBuilder(
-				TestChannelBinderConfiguration.getCompleteConfiguration(LogSinkConfiguration.class))
+				TestChannelBinderConfiguration.getCompleteConfiguration(FilterProcessorConfiguration.class))
 				.web(WebApplicationType.NONE)
-				.run("--spring.cloud.function.definition=byteArrayTextToString|logConsumer")) {
+				.run("--spring.cloud.function.definition=byteArrayTextToString|filterFunction",
+						"--spel.function.expression=payload.length() > 5")) {
 
-			InputDestination source = context.getBean(InputDestination.class);
-			source.send(new GenericMessage<byte[]>("hello".getBytes(StandardCharsets.UTF_8)));
-			Awaitility.await().until(output::getOut, value -> value.contains("hello"));
+			InputDestination processorInput = context.getBean(InputDestination.class);
+			OutputDestination processorOutput = context.getBean(OutputDestination.class);
+
+			String longMessage = "hello world message";
+			processorInput.send(new GenericMessage<>(longMessage.getBytes(StandardCharsets.UTF_8)));
+			Message<byte[]> sourceMessage = processorOutput.receive(10000);
+			assertThat(new String(sourceMessage.getPayload())).isEqualTo(longMessage);
+
+			String shortMessage = "foo";
+			processorInput.send(new GenericMessage<>(shortMessage.getBytes(StandardCharsets.UTF_8)));
+			Message<byte[]> sourceMessage2 = processorOutput.receive(5000);
+			assertThat(sourceMessage2).isNull();
 		}
 	}
 
 	@EnableAutoConfiguration
-	@Import(LogConsumerConfiguration.class)
-	public static class LogSinkConfiguration {}
+	@Import({ FilterFunctionConfiguration.class })
+	public static class FilterProcessorConfiguration {}
+
 }

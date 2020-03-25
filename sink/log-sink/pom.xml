@@ -53,6 +53,7 @@
                         <type>sink</type>
                         <version>${project.version}</version>
                         <configClass>io.pivotal.java.function.log.consumer.LogConsumerConfiguration.class</configClass>
+                        <functionDefinition>byteArrayTextToString|logConsumer</functionDefinition>
                     </generatedApp>
                     <dependencies>
                         <dependency>

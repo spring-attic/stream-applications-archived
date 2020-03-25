@@ -66,6 +66,7 @@
                         <type>processor</type>
                         <version>${project.version}</version>
                         <configClass>io.pivotal.java.function.splitter.function.SplitterFunctionConfiguration.class</configClass>
+                        <functionDefinition>byteArrayTextToString|splitterFunction</functionDefinition>
                     </generatedApp>
 
                     <dependencies>

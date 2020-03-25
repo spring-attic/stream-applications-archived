@@ -14,12 +14,13 @@
  * limitations under the License.
  */
 
-package org.springframework.cloud.stream.app;
+package org.springframework.cloud.stream.app.counter.sink;
 
 import java.nio.charset.StandardCharsets;
 
-import io.pivotal.java.function.log.consumer.LogConsumerConfiguration;
-import org.awaitility.Awaitility;
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
+import io.pivotal.java.function.counter.consumer.CounterConsumerConfiguration;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
@@ -34,26 +35,40 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Import;
 import org.springframework.messaging.support.GenericMessage;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 /**
- * @author Soby Chacko
+ * @author Christian Tzolov
  */
 @ExtendWith(OutputCaptureExtension.class)
-public class LogSinkTests {
+public class CounterSinkTests {
 
 	@Test
-	public void testSourceFromSupplier(CapturedOutput output) {
+	public void testCounterSink(CapturedOutput output) {
 		try (ConfigurableApplicationContext context = new SpringApplicationBuilder(
-				TestChannelBinderConfiguration.getCompleteConfiguration(LogSinkConfiguration.class))
+				TestChannelBinderConfiguration.getCompleteConfiguration(CounterSinkConfiguration.class))
 				.web(WebApplicationType.NONE)
-				.run("--spring.cloud.function.definition=byteArrayTextToString|logConsumer")) {
+				.run("--spring.cloud.function.definition=byteArrayTextToString|counterConsumer",
+						"--counter.name=counter666",
+						//"--counter.amount-expression=new String(payload).length()",
+						"--counter.amount-expression=payload.length()",
+						"--counter.tag.expression.foo='bar'")) {
 
+			SimpleMeterRegistry meterRegistry = context.getBean(SimpleMeterRegistry.class);
+
+			String message = "hello world message";
 			InputDestination source = context.getBean(InputDestination.class);
-			source.send(new GenericMessage<byte[]>("hello".getBytes(StandardCharsets.UTF_8)));
-			Awaitility.await().until(output::getOut, value -> value.contains("hello"));
+			source.send(new GenericMessage<>(message.getBytes(StandardCharsets.UTF_8)));
+
+			Counter counter = meterRegistry.find("counter666").counter();
+			assertThat(counter.count()).isEqualTo(message.length());
+			assertThat(counter.getId().getTag("foo")).isEqualTo("bar");
 		}
 	}
 
 	@EnableAutoConfiguration
-	@Import(LogConsumerConfiguration.class)
-	public static class LogSinkConfiguration {}
+	//@Import({CounterConsumerConfiguration.class, PayloadConverterConfiguration.class})
+	@Import({CounterConsumerConfiguration.class})
+	public static class CounterSinkConfiguration {}
+
 }
