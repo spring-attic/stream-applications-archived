@@ -17,20 +17,23 @@
 package org.springframework.cloud.stream.app.jdbc.source;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.pivotal.java.function.jdbc.supplier.JdbcSupplierApplication;
+import io.pivotal.java.function.jdbc.supplier.JdbcSupplierConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.cloud.stream.binder.test.TestChannelBinderConfiguration;
+import org.springframework.cloud.stream.config.BindingServiceConfiguration;
 import org.springframework.cloud.stream.test.binder.MessageCollector;
+import org.springframework.context.annotation.Import;
 import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.test.annotation.DirtiesContext;
 
-@SpringBootTest(classes = JdbcSupplierApplication.class,
-		properties = {"spring.datasource.url=jdbc:h2:mem:test","spring.cloud.stream.function.definition=jdbcSupplier"},
+@SpringBootTest(properties = {"spring.datasource.url=jdbc:h2:mem:test","spring.cloud.stream.function.definition=jdbcSupplier"},
 		webEnvironment = SpringBootTest.WebEnvironment.NONE)
 @DirtiesContext
-abstract class JdbcSourceIntegrationTests {
+public class JdbcSourceIntegrationTests {
 
 	protected final ObjectMapper objectMapper = new ObjectMapper();
 
@@ -44,4 +47,7 @@ abstract class JdbcSourceIntegrationTests {
 	@Autowired
 	protected MessageCollector messageCollector;
 
+	@SpringBootApplication
+	@Import({JdbcSupplierConfiguration.class})
+	public static class JdbcSourceConfiguration {}
 }

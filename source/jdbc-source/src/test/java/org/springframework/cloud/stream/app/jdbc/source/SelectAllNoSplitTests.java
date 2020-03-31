@@ -30,7 +30,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@TestPropertySource(properties = { "jdbc.query=select id, name, tag from test where tag is NULL order by id", "jdbc.split=false" })
+@TestPropertySource(properties = { "jdbc.supplier.query=select id, name, tag from test where tag is NULL order by id", "jdbc.split=false" })
 public class SelectAllNoSplitTests extends JdbcSourceIntegrationTests {
 
 	@Test

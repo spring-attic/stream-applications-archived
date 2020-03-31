@@ -28,7 +28,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-@TestPropertySource(properties = { "jdbc.query=select id, name from test order by id", "spring.cloud.stream.poller.fixedDelay=60000" })
+@TestPropertySource(properties = { "jdbc.supplier.query=select id, name from test order by id", "spring.cloud.stream.poller.fixedDelay=60000" })
 public class SelectAllWithDelayTests extends JdbcSourceIntegrationTests {
 
 		@Test

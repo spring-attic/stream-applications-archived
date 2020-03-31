@@ -28,7 +28,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@TestPropertySource(properties = "jdbc.query=select id, name from test order by id")
+@TestPropertySource(properties = "jdbc.supplier.query=select id, name from test order by id")
 class DefaultBehaviorTests extends JdbcSourceIntegrationTests {
 
 	@Test

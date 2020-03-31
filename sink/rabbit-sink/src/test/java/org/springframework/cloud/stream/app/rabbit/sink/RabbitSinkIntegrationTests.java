@@ -22,9 +22,8 @@ import com.github.dockerjava.api.command.CreateContainerCmd;
 import com.github.dockerjava.api.model.ExposedPort;
 import com.github.dockerjava.api.model.PortBinding;
 import com.github.dockerjava.api.model.Ports;
-import io.pivotal.java.function.rabbit.consumer.RabbitConsumerApplication;
+import io.pivotal.java.function.rabbit.consumer.RabbitConsumerConfiguration;
 import io.pivotal.java.function.rabbit.consumer.RabbitConsumerProperties;
-import org.junit.ClassRule;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.DirectExchange;
@@ -35,6 +34,7 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
@@ -42,7 +42,7 @@ import org.springframework.messaging.SubscribableChannel;
 import org.springframework.test.annotation.DirtiesContext;
 import org.testcontainers.containers.GenericContainer;
 
-@SpringBootTest(classes = {RabbitConsumerApplication.class},
+@SpringBootTest(
 		properties = {"spring.cloud.stream.function.definition=rabbitConsumer"},
 		webEnvironment = SpringBootTest.WebEnvironment.NONE)
 @DirtiesContext
@@ -95,4 +95,8 @@ abstract class RabbitSinkIntegrationTests {
 		}
 
 	}
+
+	@SpringBootApplication
+	@Import({RabbitConsumerConfiguration.class})
+	public static class RabbitSinkConfiguration {}
 }
