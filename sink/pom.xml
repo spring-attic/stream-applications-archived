@@ -5,14 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.springframework.cloud.stream.app</groupId>
-    <artifactId>source-apps-generator</artifactId>
+    <artifactId>sink</artifactId>
     <version>3.0.0.BUILD-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
-        <module>jdbc-source-apps-generator</module>
-        <module>http-source-apps-generator</module>
-        <module>time-source-apps-generator</module>
-        <module>mongodb-source-apps-generator</module>
+        <module>rabbit-sink</module>
+        <module>log-sink</module>
+        <module>cassandra-sink</module>
+        <module>mongodb-sink</module>
     </modules>
 </project>

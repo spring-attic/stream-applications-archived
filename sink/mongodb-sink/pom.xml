@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>cassandra-sink-apps-generator</artifactId>
+    <artifactId>mongodb-sink</artifactId>
     <version>3.0.0.BUILD-SNAPSHOT</version>
-    <name>cassandra-sink-apps-generator</name>
-    <description>cassandra sink apps generator</description>
+    <name>mongodb-sink</name>
+    <description>mongodb sink apps</description>
     <packaging>jar</packaging>
 
     <parent>
@@ -22,7 +22,7 @@
         </dependency>
         <dependency>
             <groupId>io.pivotal.java.function</groupId>
-            <artifactId>cassandra-consumer</artifactId>
+            <artifactId>mongodb-consumer</artifactId>
             <version>${java-functions.version}</version>
         </dependency>
     </dependencies>
@@ -38,16 +38,15 @@
                 <artifactId>spring-cloud-stream-app-maven-plugin</artifactId>
                 <configuration>
                     <generatedApp>
-                        <name>cassandra</name>
+                        <name>mongodb</name>
                         <type>sink</type>
                         <version>${project.version}</version>
-                        <configClass>io.pivotal.java.function.cassandra.consumer.CassandraConsumerConfiguration.class</configClass>
+                        <configClass>io.pivotal.java.function.mongo.consumer.MongoDbConsumerConfiguration.class</configClass>
                     </generatedApp>
-
                     <dependencies>
                         <dependency>
                             <groupId>io.pivotal.java.function</groupId>
-                            <artifactId>cassandra-consumer</artifactId>
+                            <artifactId>mongodb-consumer</artifactId>
                             <version>${java-functions.version}</version>
                         </dependency>
                     </dependencies>

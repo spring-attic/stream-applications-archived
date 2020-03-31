@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>rabbit-sink-apps-generator</artifactId>
+    <artifactId>splitter-processor</artifactId>
     <version>3.0.0.BUILD-SNAPSHOT</version>
-    <name>rabbit-sink-apps-generator</name>
-    <description>rabbit sink apps generator</description>
+    <name>splitter-processor</name>
+    <description>splitter processor apps</description>
     <packaging>jar</packaging>
 
     <parent>
@@ -26,36 +26,27 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-amqp</artifactId>
+            <artifactId>spring-boot-starter-json</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-stream-binder-rabbit-test-support</artifactId>
-            <scope>test</scope>
-        </dependency>
+
         <dependency>
             <groupId>io.pivotal.java.function</groupId>
-            <artifactId>rabbit-consumer</artifactId>
+            <artifactId>splitter-function</artifactId>
             <version>${java-functions.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-stream-test-support</artifactId>
+            <version>${spring-cloud-stream.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.testcontainers</groupId>
-            <artifactId>testcontainers</artifactId>
-            <version>1.9.1</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.testcontainers</groupId>
-            <artifactId>rabbitmq</artifactId>
-            <version>1.12.5</version>
+            <groupId>org.springframework.integration</groupId>
+            <artifactId>spring-integration-test</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -71,22 +62,25 @@
                 <artifactId>spring-cloud-stream-app-maven-plugin</artifactId>
                 <configuration>
                     <generatedApp>
-                        <name>rabbit</name>
-                        <type>sink</type>
+                        <name>splitter</name>
+                        <type>processor</type>
                         <version>${project.version}</version>
-                        <configClass>io.pivotal.java.function.rabbit.consumer.RabbitConsumerConfiguration.class</configClass>
+                        <configClass>io.pivotal.java.function.splitter.function.SplitterFunctionConfiguration.class</configClass>
                     </generatedApp>
 
                     <dependencies>
                         <dependency>
                             <groupId>io.pivotal.java.function</groupId>
-                            <artifactId>rabbit-consumer</artifactId>
+                            <artifactId>splitter-function</artifactId>
                             <version>${java-functions.version}</version>
                         </dependency>
                     </dependencies>
+
+                    <containerImage>
+                        <enableMetadata>true</enableMetadata>
+                    </containerImage>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 

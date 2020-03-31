@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>splitter-processor-apps-generator</artifactId>
+    <artifactId>http-source</artifactId>
     <version>3.0.0.BUILD-SNAPSHOT</version>
-    <name>splitter-processor-apps-generator</name>
-    <description>splitter processor apps generator</description>
+    <name>http-source</name>
+    <description>http source apps</description>
     <packaging>jar</packaging>
 
     <parent>
@@ -19,34 +19,20 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-json</artifactId>
-            <scope>test</scope>
-        </dependency>
-
         <dependency>
             <groupId>io.pivotal.java.function</groupId>
-            <artifactId>splitter-function</artifactId>
+            <artifactId>http-supplier</artifactId>
             <version>${java-functions.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-stream-test-support</artifactId>
-            <version>${spring-cloud-stream.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework.integration</groupId>
-            <artifactId>spring-integration-test</artifactId>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-test</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -62,25 +48,28 @@
                 <artifactId>spring-cloud-stream-app-maven-plugin</artifactId>
                 <configuration>
                     <generatedApp>
-                        <name>splitter</name>
-                        <type>processor</type>
+                        <name>http</name>
+                        <type>source</type>
                         <version>${project.version}</version>
-                        <configClass>io.pivotal.java.function.splitter.function.SplitterFunctionConfiguration.class</configClass>
+                        <configClass>io.pivotal.java.function.http.supplier.HttpSupplierConfiguration.class</configClass>
                     </generatedApp>
 
                     <dependencies>
                         <dependency>
                             <groupId>io.pivotal.java.function</groupId>
-                            <artifactId>splitter-function</artifactId>
+                            <artifactId>http-supplier</artifactId>
                             <version>${java-functions.version}</version>
                         </dependency>
                     </dependencies>
 
-                    <containerImage>
-                        <enableMetadata>true</enableMetadata>
-                    </containerImage>
+                    <additionalAppProperties>
+                        <additionalAppProperty>spring.main.web-application-type=reactive</additionalAppProperty>
+                        <additionalAppProperty>spring.cloud.streamapp.security.enabled=false</additionalAppProperty>
+                        <additionalAppProperty>spring.cloud.streamapp.security.csrf-enabled=false</additionalAppProperty>
+                    </additionalAppProperties>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 

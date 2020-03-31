@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>jdbc-source-apps-generator</artifactId>
+    <artifactId>time-source</artifactId>
     <version>3.0.0.BUILD-SNAPSHOT</version>
-    <name>jdbc-source-apps-generator</name>
-    <description>JDBC source apps generator</description>
+    <name>time-source</name>
+    <description>time source apps</description>
     <packaging>jar</packaging>
 
     <parent>
@@ -19,27 +20,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>io.pivotal.java.function</groupId>
-            <artifactId>jdbc-supplier</artifactId>
+            <artifactId>time-supplier</artifactId>
             <version>${java-functions.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-stream-test-support</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -54,22 +39,20 @@
                 <artifactId>spring-cloud-stream-app-maven-plugin</artifactId>
                 <configuration>
                     <generatedApp>
-                        <name>jdbc</name>
+                        <name>time</name>
                         <type>source</type>
                         <version>${project.version}</version>
-                        <configClass>io.pivotal.java.function.jdbc.supplier.JdbcSupplierConfiguration.class</configClass>
+                        <configClass>io.pivotal.java.function.time.supplier.TimeSupplierConfiguration.class</configClass>
                     </generatedApp>
-
                     <dependencies>
                         <dependency>
                             <groupId>io.pivotal.java.function</groupId>
-                            <artifactId>jdbc-supplier</artifactId>
+                            <artifactId>time-supplier</artifactId>
                             <version>${java-functions.version}</version>
                         </dependency>
                     </dependencies>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 

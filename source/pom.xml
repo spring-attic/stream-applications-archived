@@ -5,12 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.springframework.cloud.stream.app</groupId>
-    <artifactId>processor-apps-generator</artifactId>
+    <artifactId>source</artifactId>
     <version>3.0.0.BUILD-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
-        <module>splitter-processor-apps-generator</module>
+        <module>jdbc-source</module>
+        <module>http-source</module>
+        <module>time-source</module>
+        <module>mongodb-source</module>
     </modules>
-
 </project>
