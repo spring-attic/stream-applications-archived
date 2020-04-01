@@ -14,5 +14,6 @@
         <module>log-sink</module>
         <module>cassandra-sink</module>
         <module>mongodb-sink</module>
+        <module>counter-sink</module>
     </modules>
 </project>

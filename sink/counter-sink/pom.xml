@@ -3,11 +3,11 @@
 		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>counter-sink-apps-generator</artifactId>
+	<artifactId>counter-sink</artifactId>
 	<version>3.0.0.BUILD-SNAPSHOT</version>
-	<name>counter-sink-apps-generator</name>
-	<description>counter sink apps generator</description>
-	<packaging>pom</packaging>
+	<name>counter-sink</name>
+	<description>counter sink apps</description>
+	<packaging>jar</packaging>
 
 	<parent>
 		<groupId>org.springframework.cloud.stream.app</groupId>
