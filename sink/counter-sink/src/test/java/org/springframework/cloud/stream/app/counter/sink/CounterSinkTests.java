@@ -48,9 +48,11 @@ public class CounterSinkTests {
 		try (ConfigurableApplicationContext context = new SpringApplicationBuilder(
 				TestChannelBinderConfiguration.getCompleteConfiguration(CounterSinkConfiguration.class))
 				.web(WebApplicationType.NONE)
-				.run("--spring.cloud.function.definition=counterConsumer",
+				.run("--spring.cloud.function.definition=byteArrayTextToString|counterConsumer",
 						"--counter.name=counter666",
-						"--counter.amount-expression=new String(payload).length()",
+						//"--counter.amount-expression=new String(payload).length()",
+						//"--counter.amount-expression=#bytesToText(payload).length()",
+						"--counter.amount-expression=payload.length()",
 						"--counter.tag.expression.foo='bar'")) {
 
 			SimpleMeterRegistry meterRegistry = context.getBean(SimpleMeterRegistry.class);
@@ -66,7 +68,8 @@ public class CounterSinkTests {
 	}
 
 	@EnableAutoConfiguration
-	@Import(CounterConsumerConfiguration.class)
+	//@Import({CounterConsumerConfiguration.class, PayloadConverterConfiguration.class})
+	@Import({CounterConsumerConfiguration.class})
 	public static class CounterSinkConfiguration {}
 
 }
