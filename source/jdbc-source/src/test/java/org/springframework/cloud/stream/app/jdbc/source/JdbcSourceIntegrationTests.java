@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2019 the original author or authors.
+ * Copyright 2020 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,20 +22,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.cloud.stream.binder.test.TestChannelBinderConfiguration;
-import org.springframework.cloud.stream.config.BindingServiceConfiguration;
 import org.springframework.cloud.stream.test.binder.MessageCollector;
 import org.springframework.context.annotation.Import;
 import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.test.annotation.DirtiesContext;
 
-@SpringBootTest(properties = {"spring.datasource.url=jdbc:h2:mem:test","spring.cloud.stream.function.definition=jdbcSupplier"},
-		webEnvironment = SpringBootTest.WebEnvironment.NONE)
+/**
+ * @author Soby Chacko
+ * @author Artem Bilan
+ */
+@SpringBootTest(properties = "spring.cloud.stream.function.definition=jdbcSupplier")
 @DirtiesContext
 public class JdbcSourceIntegrationTests {
 
-	protected final ObjectMapper objectMapper = new ObjectMapper();
+	@Autowired
+	protected ObjectMapper objectMapper;
 
 	@Qualifier("jdbcSupplier-out-0")
 	@Autowired
@@ -48,6 +50,7 @@ public class JdbcSourceIntegrationTests {
 	protected MessageCollector messageCollector;
 
 	@SpringBootApplication
-	@Import({JdbcSupplierConfiguration.class})
-	public static class JdbcSourceConfiguration {}
+	@Import(JdbcSupplierConfiguration.class)
+	public static class JdbcSourceConfiguration { }
+
 }
