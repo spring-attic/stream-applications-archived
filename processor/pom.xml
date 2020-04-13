@@ -12,6 +12,7 @@
     <modules>
         <module>splitter-processor</module>
         <module>filter-processor</module>
+        <module>transform-processor</module>
     </modules>
 
 </project>

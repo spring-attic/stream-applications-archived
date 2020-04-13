@@ -1,0 +1,12 @@
+//tag::ref-doc[]
+= Transform Processor
+
+=== Payload
+
+== Options
+
+//tag::configuration-properties[]
+$$spel.function.expression$$:: $$A SpEL expression to apply.$$ *($$String$$, default: `$$<none>$$`)*
+//end::configuration-properties[]
+
+//end::ref-doc[]

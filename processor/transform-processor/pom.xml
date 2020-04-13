@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>splitter-processor</artifactId>
+    <artifactId>transform-processor</artifactId>
     <version>3.0.0.BUILD-SNAPSHOT</version>
-    <name>splitter-processor</name>
-    <description>splitter processor apps</description>
+    <name>transform-processor</name>
+    <description>transform processor apps</description>
     <packaging>jar</packaging>
 
     <parent>
@@ -26,16 +26,13 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
         <dependency>
             <groupId>io.pivotal.java.function</groupId>
-            <artifactId>splitter-function</artifactId>
+            <artifactId>spel-function</artifactId>
             <version>${java-functions.version}</version>
         </dependency>
-        <dependency>
-            <groupId>io.pivotal.java.function</groupId>
-            <artifactId>payload-converter-function</artifactId>
-            <version>${java-functions.version}</version>
-        </dependency>
+
     </dependencies>
 
     <build>
@@ -49,22 +46,17 @@
                 <artifactId>spring-cloud-stream-app-maven-plugin</artifactId>
                 <configuration>
                     <generatedApp>
-                        <name>splitter</name>
+                        <name>transform</name>
                         <type>processor</type>
                         <version>${project.version}</version>
-                        <configClass>io.pivotal.java.function.splitter.function.SplitterFunctionConfiguration.class</configClass>
-                        <functionDefinition>byteArrayTextToString|splitterFunction</functionDefinition>
+                        <configClass>io.pivotal.java.function.spel.function.SpelFunctionConfiguration.class</configClass>
+                        <functionDefinition>byteArrayTextToString|spelFunction</functionDefinition>
                     </generatedApp>
 
                     <dependencies>
                         <dependency>
                             <groupId>io.pivotal.java.function</groupId>
-                            <artifactId>payload-converter-function</artifactId>
-                            <version>${java-functions.version}</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>io.pivotal.java.function</groupId>
-                            <artifactId>splitter-function</artifactId>
+                            <artifactId>spel-function</artifactId>
                             <version>${java-functions.version}</version>
                         </dependency>
                     </dependencies>

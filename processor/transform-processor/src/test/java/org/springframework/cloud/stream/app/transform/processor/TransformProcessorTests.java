@@ -14,19 +14,15 @@
  * limitations under the License.
  */
 
-package org.springframework.cloud.stream.app.filter.processor;
+package org.springframework.cloud.stream.app.transform.processor;
 
 import java.nio.charset.StandardCharsets;
 
-import io.pivotal.java.function.filter.function.FilterFunctionConfiguration;
+import io.pivotal.java.function.spel.function.SpelFunctionConfiguration;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.test.system.CapturedOutput;
-import org.springframework.boot.test.system.OutputCaptureExtension;
 import org.springframework.cloud.stream.binder.test.InputDestination;
 import org.springframework.cloud.stream.binder.test.OutputDestination;
 import org.springframework.cloud.stream.binder.test.TestChannelBinderConfiguration;
@@ -37,36 +33,28 @@ import org.springframework.messaging.support.GenericMessage;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-/**
- * @author Christian Tzolov
- */
-public class FilterProcessorTests {
+public class TransformProcessorTests {
 
 	@Test
-	public void testFilterProcessor() {
+	public void testTransformProcessor() {
 		try (ConfigurableApplicationContext context = new SpringApplicationBuilder(
-				TestChannelBinderConfiguration.getCompleteConfiguration(FilterProcessorConfiguration.class))
+				TestChannelBinderConfiguration.getCompleteConfiguration(TransformProcessorConfiguration.class))
 				.web(WebApplicationType.NONE)
-				.run("--spring.cloud.function.definition=byteArrayTextToString|filterFunction",
-						"--spel.function.expression=payload.length() > 5")) {
+				.run("--spring.cloud.function.definition=byteArrayTextToString|spelFunction",
+						"--spel.function.expression=payload.toUpperCase()")) {
 
 			InputDestination processorInput = context.getBean(InputDestination.class);
 			OutputDestination processorOutput = context.getBean(OutputDestination.class);
 
-			String longMessage = "hello world message";
-			processorInput.send(new GenericMessage<>(longMessage.getBytes(StandardCharsets.UTF_8)));
+			String payload = "hello world";
+			processorInput.send(new GenericMessage<>(payload.getBytes(StandardCharsets.UTF_8)));
 			Message<byte[]> sourceMessage = processorOutput.receive(10000);
-			assertThat(new String(sourceMessage.getPayload())).isEqualTo(longMessage);
-
-			String shortMessage = "foo";
-			processorInput.send(new GenericMessage<>(shortMessage.getBytes(StandardCharsets.UTF_8)));
-			Message<byte[]> sourceMessage2 = processorOutput.receive(5000);
-			assertThat(sourceMessage2).isNull();
+			assertThat(new String(sourceMessage.getPayload())).isEqualTo(payload.toUpperCase());
 		}
 	}
 
 	@EnableAutoConfiguration
-	@Import({ FilterFunctionConfiguration.class })
-	public static class FilterProcessorConfiguration {}
+	@Import({ SpelFunctionConfiguration.class })
+	public static class TransformProcessorConfiguration {}
 
 }
