@@ -1,6 +1,39 @@
 //tag::ref-doc[]
 = JDBC Sink
 
+JDBC sink allows you to persist incoming payload into an RDBMS database.
+
+The `jdbc.consumer.columns` property represents pairs of `COLUMN_NAME[:EXPRESSION_FOR_VALUE]` where `EXPRESSION_FOR_VALUE` (together with the colon) is optional.
+In this case the value is evaluated via generated expression like `payload.COLUMN_NAME`, so this way we have a direct mapping from object properties to the table column.
+For example we have a JSON payload like:
+```
+{
+  "name": "My Name"
+  "address": {
+     "city": "Big City",
+     "street": "Narrow Alley"
+  }
+}
+```
+So, we can insert it into the table with `name`, `city` and `street` structure using the configuration:
+```
+--jdbc.consumer.columns=name,city:address.city,street:address.street
+```
+
+This sink supports batch inserts, as far as supported by the underlying JDBC driver.
+Batch inserts are configured via the `batch-size` and  `idle-timeout` properties:
+Incoming messages are aggregated until `batch-size` messages are present, then inserted as a batch.
+If `idle-timeout` milliseconds pass with no new messages, the aggregated batch is inserted even if it is smaller than `batch-size`, capping maximum latency.
+
+NOTE: The module also uses Spring Boot's https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-sql.html#boot-features-configure-datasource[DataSource support] for configuring the database connection, so properties like `spring.datasource.url` _etc._ apply.
+
+== Examples
+
+```
+java -jar jdbc-sink.jar --jdbc.consumer.tableName=names --jdbc.consumer.columns=name --spring.datasource.driver-class-name=org.mariadb.jdbc.Driver \
+--spring.datasource.url='jdbc:mysql://localhost:3306/test
+```
+
 === Payload
 
 == Options

@@ -30,4 +30,7 @@ $$spring.datasource.url$$:: $$JDBC URL of the database.$$ *($$String$$, default:
 $$spring.datasource.username$$:: $$Login username of the database.$$ *($$String$$, default: `$$<none>$$`)*
 //end::configuration-properties[]
 
+Also see the https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html[Spring Boot Documentation]
+for addition `DataSource` properties and `TriggerProperties` and `MaxMessagesProperties` for polling options.
+
 //end::ref-doc[]
