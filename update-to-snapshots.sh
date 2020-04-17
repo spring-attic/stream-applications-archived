@@ -20,17 +20,28 @@ function update_container() {
 }
 
 #processor apps
-cd processor-apps-generator/splitter-processor-apps-generator
+cd processor/splitter-processor
+update_versions
+cd filter-processor
+update_versions
+cd transform-processor
 update_versions
 
 #processor container
 update_container
 
 #sink apps
-cd sink-apps-generator/rabbit-sink-apps-generator
+cd sink/rabbit-sink
 update_versions
-
-cd log-sink-apps-generator
+cd mongodb-sink
+update_versions
+cd log-sink
+update_versions
+cd jdbc-sink
+update_versions
+cd counter-sink
+update_versions
+cd cassandra-sink
 update_versions
 
 #sink container
@@ -38,13 +49,16 @@ update_container
 
 #source apps
 
-cd source-apps-generator/time-source-apps-generator
+cd source/time-source
 update_versions
 
-cd jdbc-source-apps-generator
+cd jdbc-source
 update_versions
 
-cd http-source-apps-generator
+cd http-source
+update_versions
+
+cd mongodb-source
 update_versions
 
 #source container
