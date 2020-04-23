@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>file-source</module>
         <module>jdbc-source</module>
         <module>http-source</module>
         <module>time-source</module>
