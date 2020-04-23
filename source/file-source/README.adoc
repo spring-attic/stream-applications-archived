@@ -17,7 +17,7 @@ The payload of these 2 additional marker messages is of type `FileSplitter.FileM
 
 == Options
 
-The **$$jdbc$$** $$source$$ has the following options:
+The **$$file$$** $$source$$ has the following options:
 
 //tag::configuration-properties[]
 $$file.consumer.markers-json$$:: $$When 'fileMarkers == true', specify if they should be produced as FileSplitter.FileMarker objects or JSON.$$ *($$Boolean$$, default: `$$true$$`)*

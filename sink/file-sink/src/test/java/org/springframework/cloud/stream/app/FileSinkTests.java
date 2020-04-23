@@ -14,50 +14,58 @@
  * limitations under the License.
  */
 
-import java.nio.file.Files;
+package org.springframework.cloud.stream.app;
+
+import java.io.File;
+import java.io.FileReader;
 import java.nio.file.Path;
 
-import io.pivotal.java.function.file.supplier.FileSupplierConfiguration;
+import io.pivotal.java.function.file.consumer.FileConsumerConfiguration;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.cloud.stream.binder.test.OutputDestination;
+import org.springframework.cloud.stream.binder.test.InputDestination;
 import org.springframework.cloud.stream.binder.test.TestChannelBinderConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Import;
+import org.springframework.integration.support.MessageBuilder;
 import org.springframework.messaging.Message;
+import org.springframework.util.FileCopyUtils;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * @author Soby Chacko
  */
-public class FileSourceTests {
+public class FileSinkTests {
 
 	@TempDir
 	static Path tempDir;
 
 	@Test
-	public void testFileSource() throws Exception {
+	public void testFileSink() throws Exception {
 		try (ConfigurableApplicationContext context = new SpringApplicationBuilder(
 				TestChannelBinderConfiguration
-						.getCompleteConfiguration(FileSourceConfiguration.class))
+						.getCompleteConfiguration(FileSinkConfiguration.class))
 				.web(WebApplicationType.NONE)
-				.run("--spring.cloud.function.definition=fileSupplier", "--file.supplier.directory=" + tempDir.toAbsolutePath().toString())) {
+				.run("--spring.cloud.function.definition=fileConsumer",
+						"--file.consumer.name=test",
+						"--file.consumer.suffix=txt",
+						"--file.consumer.directory=" + tempDir.toAbsolutePath().toString())) {
 
-			Path firstFile = tempDir.resolve("test.file");
-			Files.write(firstFile, "testing".getBytes());
-
-			OutputDestination target = context.getBean(OutputDestination.class);
-			Message<byte[]> sourceMessage = target.receive(10000);
-			final String actual = new String(sourceMessage.getPayload());
-			assertThat(actual).isEqualTo("testing");
+			final Message<String> message = MessageBuilder.withPayload("hello").build();
+			InputDestination source = context.getBean(InputDestination.class);
+			source.send(message);
+			File file = new File(tempDir.toFile(), "test.txt");
+			assertThat(file.exists()).isTrue();
+			assertThat("hello" + System.lineSeparator())
+					.isEqualTo(FileCopyUtils.copyToString(new FileReader(file)));
 		}
 	}
 
 	@EnableAutoConfiguration
-	@Import(FileSupplierConfiguration.class)
-	public static class FileSourceConfiguration {}
+	@Import(FileConsumerConfiguration.class)
+	public static class FileSinkConfiguration {}
 }

@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>file-sink</module>
         <module>rabbit-sink</module>
         <module>log-sink</module>
         <module>cassandra-sink</module>
