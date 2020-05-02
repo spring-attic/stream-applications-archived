@@ -10,7 +10,7 @@
 
     <modules>
         <module>functions</module>
-        <module>apps</module>
+        <module>applications</module>
     </modules>
 
 </project>
