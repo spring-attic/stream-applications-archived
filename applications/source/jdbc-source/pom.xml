@@ -27,7 +27,7 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>org.springframework.cloud.function</groupId>
+            <groupId>org.springframework.cloud.fn</groupId>
             <artifactId>jdbc-supplier</artifactId>
             <version>${java-functions.version}</version>
         </dependency>
@@ -62,12 +62,12 @@
                         <name>jdbc</name>
                         <type>source</type>
                         <version>${project.version}</version>
-                        <configClass>org.springframework.cloud.function.jdbc.supplier.JdbcSupplierConfiguration.class</configClass>
+                        <configClass>org.springframework.cloud.fn.supplier.jdbc.JdbcSupplierConfiguration.class</configClass>
                     </generatedApp>
 
                     <dependencies>
                         <dependency>
-                            <groupId>org.springframework.cloud.function</groupId>
+                            <groupId>org.springframework.cloud.fn</groupId>
                             <artifactId>jdbc-supplier</artifactId>
                             <version>${java-functions.version}</version>
                         </dependency>

@@ -22,7 +22,7 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework.cloud.function</groupId>
+            <groupId>org.springframework.cloud.fn</groupId>
             <artifactId>file-consumer</artifactId>
             <version>${java-functions.version}</version>
         </dependency>
@@ -42,11 +42,11 @@
                         <name>file</name>
                         <type>sink</type>
                         <version>${project.version}</version>
-                        <configClass>org.springframework.cloud.function.file.consumer.FileConsumerConfiguration.class</configClass>
+                        <configClass>org.springframework.cloud.fn.consumer.file.FileConsumerConfiguration.class</configClass>
                     </generatedApp>
                     <dependencies>
                         <dependency>
-                            <groupId>org.springframework.cloud.function</groupId>
+                            <groupId>org.springframework.cloud.fn</groupId>
                             <artifactId>file-consumer</artifactId>
                             <version>${java-functions.version}</version>
                         </dependency>

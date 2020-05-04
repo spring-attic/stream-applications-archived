@@ -18,7 +18,7 @@ package org.springframework.cloud.stream.app;
 
 import java.nio.charset.StandardCharsets;
 
-import org.springframework.cloud.function.log.consumer.LogConsumerConfiguration;
+import org.springframework.cloud.fn.consumer.log.LogConsumerConfiguration;
 import org.awaitility.Awaitility;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

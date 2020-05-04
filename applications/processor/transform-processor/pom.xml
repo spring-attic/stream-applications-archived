@@ -49,13 +49,13 @@
                         <name>transform</name>
                         <type>processor</type>
                         <version>${project.version}</version>
-                        <configClass>org.springfamework.cloud.function.SpelFunctionConfiguration.class</configClass>
+                        <configClass>org.springfamework.cloud.fn.spel.SpelFunctionConfiguration.class</configClass>
                         <functionDefinition>byteArrayTextToString|spelFunction</functionDefinition>
                     </generatedApp>
 
                     <dependencies>
                         <dependency>
-                            <groupId>org.springframework.cloud.function</groupId>
+                            <groupId>org.springframework.cloud.fn</groupId>
                             <artifactId>spel-function</artifactId>
                             <version>${java-functions.version}</version>
                         </dependency>

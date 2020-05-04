@@ -21,7 +21,7 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework.cloud.function</groupId>
+            <groupId>org.springframework.cloud.fn</groupId>
             <artifactId>mongodb-consumer</artifactId>
             <version>${java-functions.version}</version>
         </dependency>
@@ -41,11 +41,11 @@
                         <name>mongodb</name>
                         <type>sink</type>
                         <version>${project.version}</version>
-                        <configClass>org.springframework.cloud.function.mongo.consumer.MongoDbConsumerConfiguration.class</configClass>
+                        <configClass>org.springframework.cloud.fn.consumer.mongo.MongoDbConsumerConfiguration.class</configClass>
                     </generatedApp>
                     <dependencies>
                         <dependency>
-                            <groupId>org.springframework.cloud.function</groupId>
+                            <groupId>org.springframework.cloud.fn</groupId>
                             <artifactId>mongodb-consumer</artifactId>
                             <version>${java-functions.version}</version>
                         </dependency>

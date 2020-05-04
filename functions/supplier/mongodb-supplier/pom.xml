@@ -8,7 +8,7 @@
     <description>Mongo DB supplier</description>
 
     <parent>
-        <groupId>org.springframework.cloud.function</groupId>
+        <groupId>org.springframework.cloud.fn</groupId>
         <artifactId>spring-functions-parent</artifactId>
         <version>1.0.0.BUILD-SNAPSHOT</version>
         <relativePath>../../spring-functions-parent</relativePath>
@@ -33,7 +33,7 @@
             <version>${spring-cloud-function.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.pivotal.java.function</groupId>
+            <groupId>org.springframework.cloud.fn</groupId>
             <artifactId>splitter-function</artifactId>
             <version>${project.version}</version>
         </dependency>

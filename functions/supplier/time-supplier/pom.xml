@@ -3,23 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>time-supplier</artifactId>
 	<version>1.0.0.BUILD-SNAPSHOT</version>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>8</source>
-					<target>8</target>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
 	<name>time-supplier</name>
 	<description>time supplier</description>
 
 	<parent>
-		<groupId>org.springframework.cloud.function</groupId>
+		<groupId>org.springframework.cloud.fn</groupId>
 		<artifactId>spring-functions-parent</artifactId>
 		<version>1.0.0.BUILD-SNAPSHOT</version>
 		<relativePath>../../spring-functions-parent</relativePath>

@@ -21,7 +21,7 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework.cloud.function</groupId>
+            <groupId>org.springframework.cloud.fn</groupId>
             <artifactId>log-consumer</artifactId>
             <version>${java-functions.version}</version>
         </dependency>
@@ -52,12 +52,12 @@
                         <name>log</name>
                         <type>sink</type>
                         <version>${project.version}</version>
-                        <configClass>org.springframework.cloud.function.log.consumer.LogConsumerConfiguration.class</configClass>
+                        <configClass>org.springframework.cloud.fn.consumer.log.LogConsumerConfiguration.class</configClass>
                         <functionDefinition>byteArrayTextToString|logConsumer</functionDefinition>
                     </generatedApp>
                     <dependencies>
                         <dependency>
-                            <groupId>org.springframework.cloud.function</groupId>
+                            <groupId>org.springframework.cloud.fn</groupId>
                             <artifactId>log-consumer</artifactId>
                             <version>${java-functions.version}</version>
                         </dependency>

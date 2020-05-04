@@ -18,7 +18,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.cloud.function</groupId>
+			<groupId>org.springframework.cloud.fn</groupId>
 			<artifactId>counter-consumer</artifactId>
 			<version>${java-functions.version}</version>
 		</dependency>
@@ -61,12 +61,12 @@
 						<name>counter</name>
 						<type>sink</type>
 						<version>${project.version}</version>
-						<configClass>org.springframework.cloud.function.counter.consumer.CounterConsumerConfiguration.class</configClass>
+						<configClass>org.springframework.cloud.fn.consumer.counter.CounterConsumerConfiguration.class</configClass>
 						<functionDefinition>byteArrayTextToString|counterConsumer</functionDefinition>
 					</generatedApp>
 					<dependencies>
 						<dependency>
-							<groupId>org.springframework.cloud.function</groupId>
+							<groupId>org.springframework.cloud.fn</groupId>
 							<artifactId>counter-consumer</artifactId>
 							<version>${java-functions.version}</version>
 						</dependency>

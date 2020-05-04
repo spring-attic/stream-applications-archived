@@ -21,7 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.cloud.function.jdbc.supplier.JdbcSupplierConfiguration;
+import org.springframework.cloud.fn.supplier.jdbc.JdbcSupplierConfiguration;
 import org.springframework.cloud.stream.test.binder.MessageCollector;
 import org.springframework.context.annotation.Import;
 import org.springframework.jdbc.core.JdbcOperations;

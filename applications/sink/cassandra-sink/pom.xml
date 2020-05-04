@@ -21,7 +21,7 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework.cloud.function</groupId>
+            <groupId>org.springframework.cloud.fn</groupId>
             <artifactId>cassandra-consumer</artifactId>
             <version>${java-functions.version}</version>
         </dependency>
@@ -41,12 +41,12 @@
                         <name>cassandra</name>
                         <type>sink</type>
                         <version>${project.version}</version>
-                        <configClass>org.springframework.cloud.function.cassandra.consumer.CassandraConsumerConfiguration.class</configClass>
+                        <configClass>org.springframework.cloud.fn.consumer.cassandra.CassandraConsumerConfiguration.class</configClass>
                     </generatedApp>
 
                     <dependencies>
                         <dependency>
-                            <groupId>org.springframework.cloud.function</groupId>
+                            <groupId>org.springframework.cloud.fn</groupId>
                             <artifactId>cassandra-consumer</artifactId>
                             <version>${java-functions.version}</version>
                         </dependency>

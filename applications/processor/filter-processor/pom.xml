@@ -54,13 +54,13 @@
 						<name>filter</name>
 						<type>processor</type>
 						<version>${project.version}</version>
-						<configClass>org.springframework.cloud.function.filter.function.FilterFunctionConfiguration.class</configClass>
+						<configClass>org.springframework.cloud.fn.filter.FilterFunctionConfiguration.class</configClass>
 						<functionDefinition>byteArrayTextToString|filterFunction</functionDefinition>
 					</generatedApp>
 
 					<dependencies>
 						<dependency>
-							<groupId>org.springframework.cloud.function</groupId>
+							<groupId>org.springframework.cloud.fn</groupId>
 							<artifactId>filter-function</artifactId>
 							<version>${java-functions.version}</version>
 						</dependency>

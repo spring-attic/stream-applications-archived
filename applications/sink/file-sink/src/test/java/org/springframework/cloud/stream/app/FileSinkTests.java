@@ -20,7 +20,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.nio.file.Path;
 
-import org.springframework.cloud.function.file.consumer.FileConsumerConfiguration;
+import org.springframework.cloud.fn.consumer.file.FileConsumerConfiguration;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import org.springframework.boot.WebApplicationType;

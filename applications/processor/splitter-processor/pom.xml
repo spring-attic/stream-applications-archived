@@ -52,18 +52,18 @@
                         <name>splitter</name>
                         <type>processor</type>
                         <version>${project.version}</version>
-                        <configClass>org.springframework.cloud.function.splitter.function.SplitterFunctionConfiguration.class</configClass>
+                        <configClass>org.springframework.cloud.fn.splitter.SplitterFunctionConfiguration.class</configClass>
                         <functionDefinition>byteArrayTextToString|splitterFunction</functionDefinition>
                     </generatedApp>
 
                     <dependencies>
                         <dependency>
-                            <groupId>org.springframework.cloud.function</groupId>
+                            <groupId>org.springframework.cloud.fn</groupId>
                             <artifactId>payload-converter-function</artifactId>
                             <version>${java-functions.version}</version>
                         </dependency>
                         <dependency>
-                            <groupId>org.springframework.cloud.function</groupId>
+                            <groupId>org.springframework.cloud.fn</groupId>
                             <artifactId>splitter-function</artifactId>
                             <version>${java-functions.version}</version>
                         </dependency>

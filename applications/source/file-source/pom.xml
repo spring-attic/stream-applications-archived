@@ -22,7 +22,7 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework.cloud.function</groupId>
+            <groupId>org.springframework.cloud.fn</groupId>
             <artifactId>file-supplier</artifactId>
             <version>${java-functions.version}</version>
         </dependency>
@@ -42,11 +42,11 @@
                         <name>file</name>
                         <type>source</type>
                         <version>${project.version}</version>
-                        <configClass>org.springframework.cloud.function.file.supplier.FileSupplierConfiguration.class</configClass>
+                        <configClass>org.springframework.cloud.fn.supplier.file.FileSupplierConfiguration.class</configClass>
                     </generatedApp>
                     <dependencies>
                         <dependency>
-                            <groupId>org.springframework.cloud.function</groupId>
+                            <groupId>org.springframework.cloud.fn</groupId>
                             <artifactId>file-supplier</artifactId>
                             <version>${java-functions.version}</version>
                         </dependency>

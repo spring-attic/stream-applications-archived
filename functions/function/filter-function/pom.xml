@@ -8,7 +8,7 @@
 	<description>Spring Native Function for applying filter SpEL expressions</description>
 
 	<parent>
-		<groupId>org.springframework.cloud.function</groupId>
+		<groupId>org.springframework.cloud.fn</groupId>
 		<artifactId>spring-functions-parent</artifactId>
 		<version>1.0.0.BUILD-SNAPSHOT</version>
 		<relativePath>../../spring-functions-parent</relativePath>
@@ -16,7 +16,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>io.pivotal.java.function</groupId>
+			<groupId>org.springframework.cloud.fn</groupId>
 			<artifactId>spel-function</artifactId>
 			<version>1.0.0.BUILD-SNAPSHOT</version>
 		</dependency>

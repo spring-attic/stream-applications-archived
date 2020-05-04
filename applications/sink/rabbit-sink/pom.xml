@@ -37,7 +37,7 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework.cloud.function</groupId>
+            <groupId>org.springframework.cloud.fn</groupId>
             <artifactId>rabbit-consumer</artifactId>
             <version>${java-functions.version}</version>
         </dependency>
@@ -74,12 +74,12 @@
                         <name>rabbit</name>
                         <type>sink</type>
                         <version>${project.version}</version>
-                        <configClass>org.springframework.cloud.function.rabbit.consumer.RabbitConsumerConfiguration.class</configClass>
+                        <configClass>org.springframework.cloud.fn.consumer.rabbit.RabbitConsumerConfiguration.class</configClass>
                     </generatedApp>
 
                     <dependencies>
                         <dependency>
-                            <groupId>org.springframework.cloud.function</groupId>
+                            <groupId>org.springframework.cloud.fn</groupId>
                             <artifactId>rabbit-consumer</artifactId>
                             <version>${java-functions.version}</version>
                         </dependency>

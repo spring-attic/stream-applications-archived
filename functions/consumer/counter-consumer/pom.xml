@@ -9,7 +9,7 @@
 	<description>Spring Native Consumer for computing counters</description>
 
 	<parent>
-		<groupId>org.springframework.cloud.function</groupId>
+		<groupId>org.springframework.cloud.fn</groupId>
 		<artifactId>spring-functions-parent</artifactId>
 		<version>1.0.0.BUILD-SNAPSHOT</version>
 		<relativePath>../../spring-functions-parent</relativePath>
@@ -17,7 +17,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>io.pivotal.java.function</groupId>
+			<groupId>org.springframework.cloud.fn</groupId>
 			<artifactId>payload-converter-function</artifactId>
 			<version>${project.version}</version>
 		</dependency>

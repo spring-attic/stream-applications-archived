@@ -21,7 +21,7 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework.cloud.function</groupId>
+            <groupId>org.springframework.cloud.fn</groupId>
             <artifactId>http-supplier</artifactId>
             <version>${java-functions.version}</version>
         </dependency>
@@ -51,12 +51,12 @@
                         <name>http</name>
                         <type>source</type>
                         <version>${project.version}</version>
-                        <configClass>org.springframework.cloud.function.http.supplier.HttpSupplierConfiguration.class</configClass>
+                        <configClass>org.springframework.cloud.fn.supplier.http.HttpSupplierConfiguration.class</configClass>
                     </generatedApp>
 
                     <dependencies>
                         <dependency>
-                            <groupId>org.springframework.cloud.function</groupId>
+                            <groupId>org.springframework.cloud.fn</groupId>
                             <artifactId>http-supplier</artifactId>
                             <version>${java-functions.version}</version>
                         </dependency>

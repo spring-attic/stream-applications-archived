@@ -18,7 +18,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.cloud.function</groupId>
+            <groupId>org.springframework.cloud.fn</groupId>
             <artifactId>jdbc-consumer</artifactId>
             <version>${java-functions.version}</version>
         </dependency>
@@ -60,11 +60,11 @@
                         <name>jdbc</name>
                         <type>sink</type>
                         <version>${project.version}</version>
-                        <configClass>org.springframework.cloud.function.jdbc.consumer.JdbcConsumerConfiguration.class</configClass>
+                        <configClass>org.springframework.cloud.fn.consumer.jdbc.JdbcConsumerConfiguration.class</configClass>
                     </generatedApp>
                     <dependencies>
                         <dependency>
-                            <groupId>org.springframework.cloud.function</groupId>
+                            <groupId>org.springframework.cloud.fn</groupId>
                             <artifactId>jdbc-consumer</artifactId>
                             <version>${java-functions.version}</version>
                         </dependency>

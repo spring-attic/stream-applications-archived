@@ -8,7 +8,7 @@
 	<description>HTTP Supplier</description>
 
 	<parent>
-		<groupId>org.springframework.cloud.function</groupId>
+		<groupId>org.springframework.cloud.fn</groupId>
 		<artifactId>spring-functions-parent</artifactId>
 		<version>1.0.0.BUILD-SNAPSHOT</version>
 		<relativePath>../../spring-functions-parent</relativePath>
@@ -40,10 +40,6 @@
 			<groupId>io.projectreactor</groupId>
 			<artifactId>reactor-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-configuration-processor</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>javax.validation</groupId>
